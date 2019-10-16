@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:quizstar/home.dart';
+import 'package:quizvirtual/home.dart';
 
 class splashscreen extends StatefulWidget {
   @override
@@ -27,11 +27,11 @@ class _splashscreenState extends State<splashscreen> {
       backgroundColor: Colors.indigo,
       body: Center(
         child: Text(
-          "Quizstar\nTest Yourself !!",
+          "Quiz virtual",
           style: TextStyle(
             fontSize: 50.0,
             color: Colors.white,
-            fontFamily: "Satisfy",
+            fontFamily: "Quando",
           ),
           textAlign: TextAlign.center,
         ),

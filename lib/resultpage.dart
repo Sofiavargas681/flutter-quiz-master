@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizstar/home.dart';
+import 'package:quizvirtual/home.dart';
 
 class resultpage extends StatefulWidget {
   int marks;
@@ -21,10 +21,10 @@ class _resultpageState extends State<resultpage> {
 
   @override
   void initState(){
-    if(marks < 20){
+    if(marks < 10){
       image = images[2];
       message = "You Should Try Hard..\n" + "You Scored $marks";
-    }else if(marks < 35){
+    }else if(marks < 15){
       image = images[1];
       message = "You Can Do Better..\n" + "You Scored $marks";
     }else{

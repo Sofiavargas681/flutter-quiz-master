@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizstar/splash.dart';
+import 'package:quizvirtual/splash.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Quizstar",
+      title: "quizvirtual",
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),

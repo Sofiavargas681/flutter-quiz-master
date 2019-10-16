@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quizstar/resultpage.dart';
+import 'package:quizvirtual/resultpage.dart';
 
 class getjson extends StatelessWidget {
 
@@ -16,8 +16,8 @@ class getjson extends StatelessWidget {
   // sets the asset to a particular JSON file
   // and opens the JSON
   setasset() {
-    if (langname == "Python") {
-      assettoload = "assets/python.json";
+    if (langname == "Poli") {
+      assettoload = "assets/poli.json";
     }else if(langname == "Java") {
       assettoload = "assets/java.json";
     }else if(langname == "Javascript") {
@@ -122,7 +122,7 @@ class _quizpageState extends State<quizpage> {
     canceltimer = false;
     timer = 30;
     setState(() {
-      if (i < 10) {
+      if (i < 4) {
         i++;
       } else {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -200,7 +200,7 @@ class _quizpageState extends State<quizpage> {
             context: context,
             builder: (context) => AlertDialog(
                   title: Text(
-                    "Quizstar",
+                    "Quizvirtual",
                   ),
                   content: Text("You Can't Go Back At This Stage."),
                   actions: <Widget>[

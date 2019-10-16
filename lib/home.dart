@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quizstar/quizpage.dart';
+import 'package:quizvirtual/quizpage.dart';
 
 class homepage extends StatefulWidget {
   @override
@@ -10,19 +10,11 @@ class homepage extends StatefulWidget {
 class _homepageState extends State<homepage> {
 
   List<String> images = [
-    "images/py.png",
-    "images/java.png",
-    "images/js.png",
-    "images/cpp.png",
-    "images/linux.png",
+    "images/poli.png",
   ];
 
   List<String> des = [
-    "Python is one of the most popular and fastest programming language since half a decade.\nIf You think you have learnt it.. \nJust test yourself !!",
-    "Java has always been one of the best choices for Enterprise World. If you think you have learn the Language...\nJust Test Yourself !!",
-    "Javascript is one of the most Popular programming language supporting the Web.\nIt has a wide range of Libraries making it Very Powerful !",
-    "C++, being a statically typed programming language is very powerful and Fast.\nit's DMA feature makes it more useful. !",
-    "Linux is a OPEN SOURCE Operating System which powers many Servers and Workstation.\nIt is also a top Priority in Developement Work !",
+    "Crees saber lo suficiente de la universidad politecnico grancolombiano?",
   ];
 
   Widget customcard(String langname, String image, String des){
@@ -110,7 +102,7 @@ class _homepageState extends State<homepage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Quizstar",
+          "Quiz virtual",
           style: TextStyle(
             fontFamily: "Quando",
           ),
@@ -118,11 +110,7 @@ class _homepageState extends State<homepage> {
       ),
       body: ListView(
         children: <Widget>[
-          customcard("Python", images[0], des[0]),
-          customcard("Java", images[1], des[1]),
-          customcard("Javascript", images[2], des[2]),
-          customcard("C++", images[3], des[3]),
-          customcard("Linux", images[4], des[4]),
+          customcard("Poli", images[0], des[0]),
         ],
       ),
     );
