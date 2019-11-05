@@ -16,8 +16,8 @@ class getjson extends StatelessWidget {
   // sets the asset to a particular JSON file
   // and opens the JSON
   setasset() {
-    if (langname == "Poli") {
-      assettoload = "assets/poli.json";
+    if (langname == "crear") {
+      assettoload = "assets/crear.json";
     }else if(langname == "Java") {
       assettoload = "assets/java.json";
     }else if(langname == "Javascript") {

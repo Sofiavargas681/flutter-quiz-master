@@ -10,11 +10,17 @@ class homepage extends StatefulWidget {
 class _homepageState extends State<homepage> {
 
   List<String> images = [
-    "images/poli.png",
+   // "images/poli.png",
+    "images/crear.jpg",
+    "images/responder.jpg",
+    "images/lupa.jpg",
   ];
 
   List<String> des = [
-    "Crees saber lo suficiente de la universidad politecnico grancolombiano?",
+    "En esta seccion se crearan los quices que responderan las personas !!",
+    "En esta seccion se responderan los quices !!",
+    "En esta opción realizaran las carreras de observacion correspondientes!",
+
   ];
 
   Widget customcard(String langname, String image, String des){
@@ -110,7 +116,9 @@ class _homepageState extends State<homepage> {
       ),
       body: ListView(
         children: <Widget>[
-          customcard("Poli", images[0], des[0]),
+          customcard("Crear", images[0], des[0]),
+          customcard("Responder Quiz", images[1], des[1]),
+          customcard("Carrera de observacion", images[2], des[2]),
         ],
       ),
     );
