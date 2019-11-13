@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quizvirtual/quizpage.dart';
 
+
+
+
 class homepage extends StatefulWidget {
   @override
   _homepageState createState() => _homepageState();
@@ -23,7 +26,7 @@ class _homepageState extends State<homepage> {
 
   ];
 
-  Widget customcard(String langname, String image, String des){
+  Widget customcard(String langname, String image, String des, String route){
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: 20.0,
@@ -31,12 +34,7 @@ class _homepageState extends State<homepage> {
       ),
       child: InkWell(
         onTap: (){
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-            // in changelog 1 we will pass the langname name to ther other widget class
-            // this name will be used to open a particular JSON file 
-            // for a particular language
-            builder: (context) => getjson(langname),
-          ));
+          Navigator.pushNamed(context, route);
         },
         child: Material(
           color: Colors.indigoAccent,
@@ -116,9 +114,9 @@ class _homepageState extends State<homepage> {
       ),
       body: ListView(
         children: <Widget>[
-          customcard("Crear", images[0], des[0]),
-          customcard("Responder Quiz", images[1], des[1]),
-          customcard("Carrera de observacion", images[2], des[2]),
+          customcard("Crear quiz", images[0], des[0], '/createQuiz'),
+          customcard("Responder Quiz", images[1], des[1], '/answerQuiz'),
+          customcard("Carrera de observacion", images[2], des[2], '/observationRace'),
         ],
       ),
     );
