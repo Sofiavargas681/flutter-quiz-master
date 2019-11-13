@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quizvirtual/classes/quiz.dart';
+import 'package:http/http.dart' as http;
+
+
 
 class CreateQuiz extends StatefulWidget {
   @override
@@ -64,6 +67,15 @@ class _CreateQuizState extends State<CreateQuiz> {
     String password = _passwordController.text;
     quiz q = new quiz(username, 0, DateTime.now());
     Map<String, dynamic> a = q.toJson();
+    saveQuiz(a);
     print('login attempt: $a');
+  }
+
+  saveQuiz(Map<String, dynamic> quiz) async {
+    var response = await http.post("http://192.168.0.12:8080/api/WSquiz/saveQ", 
+    headers: {"Content-type": "application/json"},
+    body: quiz.toString());
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
   }
 }

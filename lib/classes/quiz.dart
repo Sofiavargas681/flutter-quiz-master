@@ -6,7 +6,7 @@ class quiz {
   DateTime fecha_ini;
 
   quiz(this.nombre, this.cant_preguntas, this.fecha_ini){
-    this.id_quiz = null;
+    this.fecha_ini = DateTime.now();
   }
 
   quiz.fromJson(Map<String, dynamic> json)
