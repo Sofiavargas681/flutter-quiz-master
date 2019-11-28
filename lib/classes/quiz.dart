@@ -15,11 +15,5 @@ class quiz {
       cant_preguntas = json['cant_preguntas'],
       fecha_ini = json['fecha_ini'];
 
-  Map<String, dynamic> toJson() => 
-  {
-    'id_quiz': id_quiz,
-    'nombre': nombre,
-    'cant_preguntas': cant_preguntas,
-    'fecha_ini': fecha_ini,
-  };
+  String toJson() => '{"nombre": "' + this.nombre + '" , "cant_preguntas": ' + this.cant_preguntas.toString() + '}';
 }

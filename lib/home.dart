@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quizvirtual/quizpage.dart';
 
 
 
@@ -115,8 +114,7 @@ class _homepageState extends State<homepage> {
       body: ListView(
         children: <Widget>[
           customcard("Crear quiz", images[0], des[0], '/createQuiz'),
-          customcard("Responder Quiz", images[1], des[1], '/answerQuiz'),
-          customcard("Carrera de observacion", images[2], des[2], '/observationRace'),
+          customcard("Responder Quiz", images[1], des[1], '/listQuiz'),
         ],
       ),
     );
