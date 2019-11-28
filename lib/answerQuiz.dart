@@ -2,30 +2,25 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quizvirtual/resultpage.dart';
+import 'package:quiz_virtual/activateResponse.dart';
+import 'package:quiz_virtual/resultpage.dart';
+import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
+import 'package:vector_math/vector_math_64.dart' as vector;
 
-class getjson extends StatelessWidget {
+class getjsonfotstartquiz extends StatelessWidget {
 
   // accept the langname as a parameter
 
   String langname;
-  getjson(this.langname);
+  getjsonfotstartquiz(this.langname);
   String assettoload;
 
   // a function
   // sets the asset to a particular JSON file
   // and opens the JSON
   setasset() {
-    if (langname == "crear") {
-      assettoload = "assets/crear.json";
-    }else if(langname == "Java") {
-      assettoload = "assets/java.json";
-    }else if(langname == "Javascript") {
+    if(langname == "js") {
       assettoload = "assets/js.json";
-    }else if(langname == "C++") {
-      assettoload = "assets/cpp.json";
-    }else{
-      assettoload = "assets/linux.json";
     }
   }
 
@@ -74,8 +69,8 @@ class _quizpageState extends State<quizpage> {
   Color wrong = Colors.red;
   int marks = 0;
   int i = 1;
-  int timer = 30;
-  String showtimer = "30";
+  int timer = 15;
+  String showtimer = "15";
 
   Map<String, Color> btncolor = {
     "a": Colors.indigoAccent,
@@ -107,7 +102,7 @@ class _quizpageState extends State<quizpage> {
       setState(() {
         if (timer < 1) {
           t.cancel();
-          nextquestion();
+         
         } else if (canceltimer == true) {
           t.cancel();
         } else {
@@ -119,10 +114,11 @@ class _quizpageState extends State<quizpage> {
   }
 
   void nextquestion() {
+    
     canceltimer = false;
-    timer = 30;
+    timer = 15;
     setState(() {
-      if (i < 4) {
+      if (i < 10) {
         i++;
       } else {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -147,11 +143,9 @@ class _quizpageState extends State<quizpage> {
       // debugPrint(mydata[2][i.toString()] + " is equal to " + mydata[1][i.toString()][k]);
       marks = marks + 5;
       // changing the color variable to be green
-      colortoshow = right;
     } else {
       // just a print sattement to check the correct working
       // debugPrint(mydata[2]["1"] + " is equal to " + mydata[1]["1"][k]);
-      colortoshow = wrong;
     }
     setState(() {
       // applying the changed color to the particular button that was selected
@@ -168,41 +162,46 @@ class _quizpageState extends State<quizpage> {
         vertical: 10.0,
         horizontal: 20.0,
       ),
-      child: MaterialButton(
-        onPressed: () => checkanswer(k),
-        child: Text(
-          mydata[1][i.toString()][k],
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: "Alike",
-            fontSize: 16.0,
+      child: Material(
+          color: Colors.indigoAccent,
+          elevation: 10.0,
+          borderRadius: BorderRadius.circular(25.0),
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Center(
+                  child: Text(
+                    mydata[1][i.toString()][k],
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Alike",
+                      fontSize: 16.0,
+                    ),
+                    maxLines: 1,
+                  ),
+                ),
+              ],
+            ),
           ),
-          maxLines: 1,
         ),
-        color: btncolor[k],
-        splashColor: Colors.indigo[700],
-        highlightColor: Colors.indigo[700],
-        minWidth: 200.0,
-        height: 45.0,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      ),
-    );
+        //onPressed: () => checkanswer(k),
+        
+      );
   }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-    return WillPopScope(
+    return new GestureDetector(
+      onTap: () => _navigateAndDisplaySelection(context),
+      child : new WillPopScope(
       onWillPop: () {
         return showDialog(
             context: context,
             builder: (context) => AlertDialog(
                   title: Text(
-                    "Quizvirtual",
+                    "quiz virtual",
                   ),
-                  content: Text("You Can't Go Back At This Stage."),
+                  content: Text("No intentes retroceder, no se puede"),
                   actions: <Widget>[
                     FlatButton(
                       onPressed: () {
@@ -246,25 +245,24 @@ class _quizpageState extends State<quizpage> {
                 ),
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.topCenter,
-                child: Center(
-                  child: Text(
-                    showtimer,
-                    style: TextStyle(
-                      fontSize: 35.0,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Times New Roman',
-                    ),
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),
+    ),
     );
+  }
+
+  _navigateAndDisplaySelection(BuildContext context) async {
+    // Navigator.push returns a Future that completes after calling
+    // Navigator.pop on the Selection Screen.
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ARclass()),
+    );
+
+    // After the Selection Screen returns a result, hide any previous snackbars
+    // and show the new result.
+    checkanswer(result);
+
   }
 }

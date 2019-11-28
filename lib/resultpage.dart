@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizvirtual/home.dart';
+import 'package:quiz_virtual/home.dart';
 
 class resultpage extends StatefulWidget {
   int marks;
